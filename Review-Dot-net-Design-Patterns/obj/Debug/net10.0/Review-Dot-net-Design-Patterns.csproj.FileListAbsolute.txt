@@ -1,0 +1,7 @@
+E:\Dotnet\Review-Dot-net-Design-Patterns\obj\Debug\net10.0\Review-Dot-net-Design-Patterns.GeneratedMSBuildEditorConfig.editorconfig
+E:\Dotnet\Review-Dot-net-Design-Patterns\obj\Debug\net10.0\Review-Dot-net-Design-Patterns.AssemblyInfoInputs.cache
+E:\Dotnet\Review-Dot-net-Design-Patterns\obj\Debug\net10.0\Review-Dot-net-Design-Patterns.AssemblyInfo.cs
+E:\Dotnet\Review-Dot-net-Design-Patterns\obj\Debug\net10.0\Review-Dot-net-Design-Patterns.csproj.CoreCompileInputs.cache
+E:\Dotnet\Review-Dot-net-Design-Patterns\obj\Debug\net10.0\Review-Dot-net-Design-Patterns.dll
+E:\Dotnet\Review-Dot-net-Design-Patterns\obj\Debug\net10.0\refint\Review-Dot-net-Design-Patterns.dll
+E:\Dotnet\Review-Dot-net-Design-Patterns\obj\Debug\net10.0\Review-Dot-net-Design-Patterns.pdb
