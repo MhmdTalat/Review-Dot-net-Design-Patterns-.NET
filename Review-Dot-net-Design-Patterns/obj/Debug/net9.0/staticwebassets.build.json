@@ -1,0 +1,362 @@
+{
+  "Version": 1,
+  "Hash": "sYH42g0Z5HPTo9euzazYcJsGjrtjO6Q21jkfxFcvgDI=",
+  "Source": "Review-Dot-net-Design-Patterns",
+  "BasePath": "_content/Review-Dot-net-Design-Patterns",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Review-Dot-net-Design-Patterns\\wwwroot",
+      "Source": "Review-Dot-net-Design-Patterns",
+      "ContentRoot": "E:\\Dotnet\\Review-Dot-net-Design-Patterns-.NET\\Review-Dot-net-Design-Patterns\\wwwroot\\",
+      "BasePath": "_content/Review-Dot-net-Design-Patterns",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "E:\\Dotnet\\Review-Dot-net-Design-Patterns-.NET\\Review-Dot-net-Design-Patterns\\obj\\Debug\\net9.0\\compressed\\6uckfv9tjw-j26ihjwu9a.gz",
+      "SourceId": "Review-Dot-net-Design-Patterns",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Dotnet\\Review-Dot-net-Design-Patterns-.NET\\Review-Dot-net-Design-Patterns\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/Review-Dot-net-Design-Patterns",
+      "RelativePath": "index#[.{fingerprint=j26ihjwu9a}]?.html.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "E:\\Dotnet\\Review-Dot-net-Design-Patterns-.NET\\Review-Dot-net-Design-Patterns\\wwwroot\\index.html",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "jsy54zr88m",
+      "Integrity": "Y9+HrW5VFvAPmltqi3Ip43MDtbN7WV8NKTrCYEgg4Tw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "E:\\Dotnet\\Review-Dot-net-Design-Patterns-.NET\\Review-Dot-net-Design-Patterns\\wwwroot\\index.html"
+    },
+    {
+      "Identity": "E:\\Dotnet\\Review-Dot-net-Design-Patterns-.NET\\Review-Dot-net-Design-Patterns\\wwwroot\\index.html",
+      "SourceId": "Review-Dot-net-Design-Patterns",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Dotnet\\Review-Dot-net-Design-Patterns-.NET\\Review-Dot-net-Design-Patterns\\wwwroot\\",
+      "BasePath": "_content/Review-Dot-net-Design-Patterns",
+      "RelativePath": "index#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "j26ihjwu9a",
+      "Integrity": "O0z5ad+h2EpQHWEQgZnZd4CcuO0kzjZ9VKZA7ioQzBM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "index.html",
+      "AssetFile": "E:\\Dotnet\\Review-Dot-net-Design-Patterns-.NET\\Review-Dot-net-Design-Patterns\\obj\\Debug\\net9.0\\compressed\\6uckfv9tjw-j26ihjwu9a.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000321957502"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3105"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Y9+HrW5VFvAPmltqi3Ip43MDtbN7WV8NKTrCYEgg4Tw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 13 Jun 2026 09:54:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"O0z5ad+h2EpQHWEQgZnZd4CcuO0kzjZ9VKZA7ioQzBM=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-O0z5ad+h2EpQHWEQgZnZd4CcuO0kzjZ9VKZA7ioQzBM="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "E:\\Dotnet\\Review-Dot-net-Design-Patterns-.NET\\Review-Dot-net-Design-Patterns\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11448"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O0z5ad+h2EpQHWEQgZnZd4CcuO0kzjZ9VKZA7ioQzBM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 13 Jun 2026 09:54:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-O0z5ad+h2EpQHWEQgZnZd4CcuO0kzjZ9VKZA7ioQzBM="
+        }
+      ]
+    },
+    {
+      "Route": "index.html.gz",
+      "AssetFile": "E:\\Dotnet\\Review-Dot-net-Design-Patterns-.NET\\Review-Dot-net-Design-Patterns\\obj\\Debug\\net9.0\\compressed\\6uckfv9tjw-j26ihjwu9a.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3105"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Y9+HrW5VFvAPmltqi3Ip43MDtbN7WV8NKTrCYEgg4Tw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 13 Jun 2026 09:54:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Y9+HrW5VFvAPmltqi3Ip43MDtbN7WV8NKTrCYEgg4Tw="
+        }
+      ]
+    },
+    {
+      "Route": "index.j26ihjwu9a.html",
+      "AssetFile": "E:\\Dotnet\\Review-Dot-net-Design-Patterns-.NET\\Review-Dot-net-Design-Patterns\\obj\\Debug\\net9.0\\compressed\\6uckfv9tjw-j26ihjwu9a.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000321957502"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3105"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Y9+HrW5VFvAPmltqi3Ip43MDtbN7WV8NKTrCYEgg4Tw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 13 Jun 2026 09:54:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"O0z5ad+h2EpQHWEQgZnZd4CcuO0kzjZ9VKZA7ioQzBM=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "j26ihjwu9a"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-O0z5ad+h2EpQHWEQgZnZd4CcuO0kzjZ9VKZA7ioQzBM="
+        }
+      ]
+    },
+    {
+      "Route": "index.j26ihjwu9a.html",
+      "AssetFile": "E:\\Dotnet\\Review-Dot-net-Design-Patterns-.NET\\Review-Dot-net-Design-Patterns\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11448"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O0z5ad+h2EpQHWEQgZnZd4CcuO0kzjZ9VKZA7ioQzBM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 13 Jun 2026 09:54:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "j26ihjwu9a"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-O0z5ad+h2EpQHWEQgZnZd4CcuO0kzjZ9VKZA7ioQzBM="
+        }
+      ]
+    },
+    {
+      "Route": "index.j26ihjwu9a.html.gz",
+      "AssetFile": "E:\\Dotnet\\Review-Dot-net-Design-Patterns-.NET\\Review-Dot-net-Design-Patterns\\obj\\Debug\\net9.0\\compressed\\6uckfv9tjw-j26ihjwu9a.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3105"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Y9+HrW5VFvAPmltqi3Ip43MDtbN7WV8NKTrCYEgg4Tw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 13 Jun 2026 09:54:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "j26ihjwu9a"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Y9+HrW5VFvAPmltqi3Ip43MDtbN7WV8NKTrCYEgg4Tw="
+        }
+      ]
+    }
+  ]
+}

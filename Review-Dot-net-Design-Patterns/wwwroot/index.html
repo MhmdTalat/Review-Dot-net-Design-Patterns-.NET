@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employee Management System</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f1a;
+      color: #e0e0f0;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00d4ff;
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 700px) { .container { grid-template-columns: 1fr; } }
+
+    .card {
+      background: #1a1a2e;
+      border: 1px solid #2a2a4a;
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+
+    .card h2 {
+      color: #a78bfa;
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+      border-bottom: 1px solid #2a2a4a;
+      padding-bottom: .6rem;
+    }
+
+    label {
+      display: block;
+      font-size: .82rem;
+      color: #a0a0c0;
+      margin-bottom: .25rem;
+      margin-top: .9rem;
+    }
+
+    input {
+      width: 100%;
+      padding: .5rem .75rem;
+      background: #0f0f1a;
+      border: 1px solid #3a3a5a;
+      border-radius: 6px;
+      color: #e0e0f0;
+      font-size: .95rem;
+      transition: border-color .2s;
+    }
+
+    input:focus { outline: none; border-color: #7c3aed; }
+
+    .btn-row {
+      display: flex;
+      gap: .75rem;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      flex: 1;
+      padding: .55rem 1rem;
+      border: none;
+      border-radius: 6px;
+      font-size: .9rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: opacity .2s;
+    }
+
+    button:hover { opacity: .85; }
+
+    .btn-create  { background: #7c3aed; color: #fff; }
+    .btn-update  { background: #0891b2; color: #fff; }
+    .btn-delete  { background: #be123c; color: #fff; }
+    .btn-load    { background: #059669; color: #fff; }
+
+    /* employee table */
+    #employees-section { grid-column: 1 / -1; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .9rem;
+      margin-top: 1rem;
+    }
+
+    th {
+      background: #2a2a4a;
+      color: #a78bfa;
+      text-align: left;
+      padding: .6rem .8rem;
+    }
+
+    td { padding: .55rem .8rem; border-bottom: 1px solid #2a2a4a; }
+
+    tr:hover td { background: #1f1f38; }
+
+    .action-btn {
+      padding: .3rem .65rem;
+      border-radius: 5px;
+      font-size: .8rem;
+      cursor: pointer;
+      border: none;
+      font-weight: 600;
+    }
+
+    .edit-btn   { background: #0891b2; color: #fff; margin-right: .3rem; }
+    .del-btn    { background: #be123c; color: #fff; }
+
+    /* toast */
+    #toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      padding: .75rem 1.25rem;
+      border-radius: 8px;
+      font-size: .9rem;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+      z-index: 100;
+    }
+
+    #toast.show { opacity: 1; }
+    #toast.success { background: #059669; color: #fff; }
+    #toast.error   { background: #be123c; color: #fff; }
+
+    .empty-msg { text-align: center; color: #555; padding: 1.5rem; }
+  </style>
+</head>
+<body>
+
+<h1>⚙ Employee Management System</h1>
+
+<div class="container">
+
+  <!-- FORM CARD -->
+  <div class="card">
+    <h2 id="form-title">➕ Add Employee</h2>
+
+    <label>Employee ID *</label>
+    <input type="number" id="emp_id" placeholder="e.g. 101" />
+
+    <label>Name *</label>
+    <input type="text" id="emp_name" placeholder="Full name" />
+
+    <label>Address</label>
+    <input type="text" id="emp_address" placeholder="Street, City" />
+
+    <label>Email *</label>
+    <input type="email" id="emp_email" placeholder="name@example.com" />
+
+    <label>Phone *</label>
+    <input type="text" id="emp_phone" placeholder="e.g. 555-0100" />
+
+    <label>Department ID</label>
+    <input type="number" id="dept_id" placeholder="e.g. 10" />
+
+    <label>Department Name</label>
+    <input type="text" id="dept_name" placeholder="e.g. Engineering" />
+
+    <div class="btn-row">
+      <button class="btn-create" onclick="createEmployee()">Create</button>
+      <button class="btn-update" onclick="updateEmployee()">Update</button>
+    </div>
+  </div>
+
+  <!-- LOOKUP CARD -->
+  <div class="card">
+    <h2>🔍 Lookup Employee</h2>
+
+    <label>Employee ID</label>
+    <input type="number" id="lookup_id" placeholder="Enter ID to find" />
+
+    <div class="btn-row">
+      <button class="btn-load" onclick="lookupEmployee()">Find</button>
+      <button class="btn-delete" onclick="deleteEmployee()">Delete</button>
+    </div>
+
+    <div id="lookup-result" style="margin-top:1rem;"></div>
+  </div>
+
+  <!-- TABLE CARD -->
+  <div class="card" id="employees-section">
+    <h2>👥 All Employees
+      <button class="btn-load" style="float:right;padding:.3rem .9rem;font-size:.8rem;" onclick="loadAll()">Refresh</button>
+    </h2>
+    <div id="emp-table-wrap"><p class="empty-msg">No employees yet.</p></div>
+  </div>
+
+</div>
+
+<!-- toast -->
+<div id="toast"></div>
+
+<script>
+  const API = '/api/employees';
+
+  // ── helpers ──────────────────────────────────────────────
+  function buildPayload() {
+    return {
+      emp_id:       parseInt(document.getElementById('emp_id').value)    || 0,
+      emp_name:     document.getElementById('emp_name').value.trim(),
+      emp_address:  document.getElementById('emp_address').value.trim(),
+      emp_email:    document.getElementById('emp_email').value.trim(),
+      emp_phone:    document.getElementById('emp_phone').value.trim(),
+      departmentId: parseInt(document.getElementById('dept_id').value)   || 0,
+      department: {
+        id:   parseInt(document.getElementById('dept_id').value)   || 0,
+        name: document.getElementById('dept_name').value.trim(),
+        employees: []
+      }
+    };
+  }
+
+  function toast(msg, type = 'success') {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = `show ${type}`;
+    setTimeout(() => { t.className = ''; }, 3000);
+  }
+
+  function renderCard(emp) {
+    return `
+      <div style="background:#0f0f1a;border:1px solid #2a2a4a;border-radius:8px;padding:1rem;margin-top:.5rem;">
+        <p style="color:#00d4ff;font-weight:700;font-size:1rem;">► ${emp.emp_name || '—'}</p>
+        <p>ID: <b>${emp.emp_id}</b></p>
+        <p>Address: ${emp.emp_address || '—'}</p>
+        <p>Email: ${emp.emp_email || '—'}</p>
+        <p>Phone: ${emp.emp_phone || '—'}</p>
+        <p>Dept ID: ${emp.departmentId || '—'}</p>
+        <p>Dept Name: ${emp.department?.name || '—'}</p>
+      </div>`;
+  }
+
+  function renderTable(list) {
+    if (!list.length) {
+      document.getElementById('emp-table-wrap').innerHTML = '<p class="empty-msg">No employees found.</p>';
+      return;
+    }
+    const rows = list.map(e => `
+      <tr>
+        <td>${e.emp_id}</td>
+        <td>${e.emp_name || '—'}</td>
+        <td>${e.emp_email || '—'}</td>
+        <td>${e.emp_phone || '—'}</td>
+        <td>${e.emp_address || '—'}</td>
+        <td>${e.department?.name || '—'}</td>
+        <td>
+          <button class="action-btn edit-btn" onclick="fillForm(${e.emp_id})">Edit</button>
+          <button class="action-btn del-btn"  onclick="deleteById(${e.emp_id})">Del</button>
+        </td>
+      </tr>`).join('');
+
+    document.getElementById('emp-table-wrap').innerHTML = `
+      <table>
+        <thead><tr>
+          <th>ID</th><th>Name</th><th>Email</th><th>Phone</th>
+          <th>Address</th><th>Dept</th><th>Actions</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+  }
+
+  // ── API calls ─────────────────────────────────────────────
+  async function loadAll() {
+    const res  = await fetch(API);
+    const data = await res.json();
+    renderTable(data);
+  }
+
+  async function createEmployee() {
+    const payload = buildPayload();
+    const res = await fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (res.ok) {
+      toast('Employee created successfully.');
+      loadAll();
+      clearForm();
+    } else {
+      toast(data.message || JSON.stringify(data.errors), 'error');
+    }
+  }
+
+  async function updateEmployee() {
+    const id      = parseInt(document.getElementById('emp_id').value);
+    const payload = buildPayload();
+    const res = await fetch(`${API}/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (res.ok) {
+      toast('Employee updated successfully.');
+      loadAll();
+      clearForm();
+    } else {
+      toast(data.message || JSON.stringify(data.errors), 'error');
+    }
+  }
+
+  async function lookupEmployee() {
+    const id  = document.getElementById('lookup_id').value;
+    const res = await fetch(`${API}/${id}`);
+    const data = await res.json();
+    document.getElementById('lookup-result').innerHTML = res.ok
+      ? renderCard(data)
+      : `<p style="color:#f87171;margin-top:.5rem;">${data.message}</p>`;
+  }
+
+  async function deleteEmployee() {
+    const id = document.getElementById('lookup_id').value;
+    await deleteById(id);
+  }
+
+  async function deleteById(id) {
+    if (!confirm(`Delete employee ID ${id}?`)) return;
+    const res = await fetch(`${API}/${id}`, { method: 'DELETE' });
+    if (res.ok || res.status === 204) {
+      toast(`Employee ${id} deleted.`);
+      loadAll();
+    } else {
+      const data = await res.json();
+      toast(data.message, 'error');
+    }
+  }
+
+  async function fillForm(id) {
+    const res  = await fetch(`${API}/${id}`);
+    const emp  = await res.json();
+    document.getElementById('emp_id').value      = emp.emp_id;
+    document.getElementById('emp_name').value    = emp.emp_name    || '';
+    document.getElementById('emp_address').value = emp.emp_address || '';
+    document.getElementById('emp_email').value   = emp.emp_email   || '';
+    document.getElementById('emp_phone').value   = emp.emp_phone   || '';
+    document.getElementById('dept_id').value     = emp.departmentId || '';
+    document.getElementById('dept_name').value   = emp.department?.name || '';
+    document.getElementById('form-title').textContent = `✏️ Edit Employee #${id}`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function clearForm() {
+    ['emp_id','emp_name','emp_address','emp_email','emp_phone','dept_id','dept_name']
+      .forEach(id => document.getElementById(id).value = '');
+    document.getElementById('form-title').textContent = '➕ Add Employee';
+  }
+
+  // load table on startup
+  loadAll();
+</script>
+</body>
+</html>

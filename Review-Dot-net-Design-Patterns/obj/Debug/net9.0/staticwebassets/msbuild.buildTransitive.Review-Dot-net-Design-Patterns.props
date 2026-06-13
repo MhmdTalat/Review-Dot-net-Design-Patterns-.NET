@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Review-Dot-net-Design-Patterns.props" />
+</Project>

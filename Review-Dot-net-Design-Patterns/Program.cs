@@ -1,38 +1,59 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Review_Dot_net_Design_Patterns.model;
 
-using Review_Dot_net_Design_Patterns;
-using Review_Dot_net_Design_Patterns.model;
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
 
-// Set console background to black
-Console.BackgroundColor = ConsoleColor.Black;
-Console.ForegroundColor = ConsoleColor.White;
-Console.Clear();
+// Serve wwwroot/index.html at "/"
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
-// Add title
-Console.ForegroundColor = ConsoleColor.Cyan;
-Console.WriteLine("╔════════════════════════════════════════════════════════════╗");
-Console.WriteLine("║         EMPLOYEE MANAGEMENT SYSTEM - DATA ENTRY            ║");
-Console.WriteLine("╚════════════════════════════════════════════════════════════╝");
-Console.WriteLine();
+// In-memory store (keyed by Emp_id)
+var employees = new Dictionary<int, Emp_data>();
 
-Console.ForegroundColor = ConsoleColor.White;
-Emp_method emp_method = new Emp_method(0, "", "", "", "");
-emp_method.readEmpDetails();
+// GET /api/employees — return all employees
+app.MapGet("/api/employees", () => Results.Ok(employees.Values));
 
-// Display separator
-Console.ForegroundColor = ConsoleColor.Green;
-Console.WriteLine("\n╔════════════════════════════════════════════════════════════╗");
-Console.WriteLine("║              EMPLOYEE INFORMATION DISPLAY                  ║");
-Console.WriteLine("╚════════════════════════════════════════════════════════════╝\n");
+// GET /api/employees/{id}
+app.MapGet("/api/employees/{id:int}", (int id) =>
+    employees.TryGetValue(id, out var emp)
+        ? Results.Ok(emp)
+        : Results.NotFound(new { message = $"Employee {id} not found." }));
 
-Console.ForegroundColor = ConsoleColor.Yellow;
-Console.WriteLine($"Date/Time: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
-Console.WriteLine();
+// POST /api/employees — create
+app.MapPost("/api/employees", (Emp_data emp) =>
+{
+    if (employees.ContainsKey(emp.Emp_id))
+        return Results.Conflict(new { message = $"Employee ID {emp.Emp_id} already exists." });
 
-Console.ForegroundColor = ConsoleColor.White;
-emp_method.GetEmpDetails(emp_method.GetEmpData());
+    var errors = EmpDataValidator.ValidateEmpData(emp);
+    if (errors.Count > 0)
+        return Results.BadRequest(new { errors });
 
-Console.ForegroundColor = ConsoleColor.Gray;
-Console.WriteLine("\n╚════════════════════════════════════════════════════════════╝");
-Console.ResetColor();
+    employees[emp.Emp_id] = emp;
+    return Results.Created($"/api/employees/{emp.Emp_id}", emp);
+});
 
+// PUT /api/employees/{id} — update
+app.MapPut("/api/employees/{id:int}", (int id, Emp_data updated) =>
+{
+    if (!employees.ContainsKey(id))
+        return Results.NotFound(new { message = $"Employee {id} not found." });
+
+    var errors = EmpDataValidator.ValidateEmpData(updated);
+    if (errors.Count > 0)
+        return Results.BadRequest(new { errors });
+
+    updated.Emp_id = id;
+    employees[id] = updated;
+    return Results.Ok(updated);
+});
+
+// DELETE /api/employees/{id}
+app.MapDelete("/api/employees/{id:int}", (int id) =>
+{
+    if (!employees.Remove(id))
+        return Results.NotFound(new { message = $"Employee {id} not found." });
+    return Results.NoContent();
+});
+
+app.Run();

@@ -12,5 +12,7 @@ namespace Review_Dot_net_Design_Patterns.model
         public string? Emp_address { get; set; }
         public string? Emp_email { get; set; }
         public string? Emp_phone { get; set; }
+        public int DepartmentId { get; set; }
+        public Department? Department { get; set; }
     }
 }
